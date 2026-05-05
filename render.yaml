@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: learnif-ai-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
