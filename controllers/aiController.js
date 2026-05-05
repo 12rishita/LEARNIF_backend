@@ -39,6 +39,14 @@ export const generateFlashcards = async (req, res, next) => {
       parseInt(count)
     );
 
+    if (!cards.length) {
+      return res.status(502).json({
+        success: false,
+        error: "Flashcard generation returned no cards. Please try again.",
+        statusCode: 502,
+      });
+    }
+
     // Save to database
     const flashcardSet = await Flashcard.create({
       userId: req.user._id,
